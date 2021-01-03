@@ -4,8 +4,8 @@ This first version we didn't save it to database yet.
 
 Project Enviroment
 ---------------------------
-java 1.8
-Spring boot
+- java 1.8
+- Spring boot
 
 Features
 --------------------------------------
