@@ -18,13 +18,13 @@ Features
 To test
 ------------------------------------
 make sure the server up running
-step1 : mvn clean install
-step2 : java -jar target/PrettyUrl-0.0.1-SNAPSHOT.jar
+- step1 : mvn clean install
+- step2 : java -jar target/PrettyUrl-0.0.1-SNAPSHOT.jar
 
 We have to ways to test
 -Postman (Post : generate and save, Get : display List of urls, DELETE : delete the urls base on it ages has been provided)
    . request url :  {serverUrl}/urlInfo
-    . Parameters in body(Post) : alias(optional), fullUrl
+   . Parameters in body(Post) : alias(optional), fullUrl
 - Unit test
 - in the unit test we have api testing and service testing
 
