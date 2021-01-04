@@ -12,8 +12,8 @@ Features
 --------------------------------------
 - Convert the full url into short url and save it
 - Check if the full url is valid
-- Possibility to create the short link by providing the alias. also check the alias is existing otherwise will throw an exception.
-- The links will be remove/expired in the minutes that has been provided in application.properties.
+- Possibility to create the short link by providing the alias. also check the alias is not useed yet otherwise will throw an exception.
+- The links will be remove/expired in the in period of time that has been provided in application.properties(default.timeout.in.minute).
 - Display all urls
 - Visit the website(full url) by accessing the shorten link
 
@@ -29,7 +29,7 @@ We have to ways to test
    - request url :  {serverUrl}/urlInfo
    - Parameters in body(Post) : alias(optional), fullUrl
 * Unit test
-   - in the unit test we have api testing and service testing
+   - in the unit test we have apis testing and services testing
 
 
 
