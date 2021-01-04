@@ -18,9 +18,10 @@ Features
 To test
 ------------------------------------
 make sure the server up running
+'''
 $ mvn clean install
 $ java -jar target/PrettyUrl-0.0.1-SNAPSHOT.jar
-
+'''
 We have to ways to test
 * Postman (Post : generate and save, Get : display List of urls, DELETE : delete the urls base on the time that has been provided)
    - request url :  {serverUrl}/urlInfo
