@@ -22,10 +22,10 @@ make sure the server up running
 - step2 : java -jar target/PrettyUrl-0.0.1-SNAPSHOT.jar
 
 We have to ways to test
--Postman (Post : generate and save, Get : display List of urls, DELETE : delete the urls base on it ages has been provided)
+* Postman (Post : generate and save, Get : display List of urls, DELETE : delete the urls base on it ages has been provided)
    - request url :  {serverUrl}/urlInfo
    - Parameters in body(Post) : alias(optional), fullUrl
-- Unit test
+* Unit test
 - in the unit test we have api testing and service testing
 
 
