@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
@@ -60,7 +61,7 @@ public class PrettyUrlApiTests {
         RestTemplate restTemplate = new RestTemplate();
         final String baseUrl = serverUrl + "urlInfo";
         URI uri = new URI(baseUrl);
-        String alias = "testing";// have to generate randomly otherwise will throw exception when has the same alias
+        String alias = "testing";
         UrlInfo urlInfo = new UrlInfo(alias, "https://www.google.com");
 
         try {
@@ -94,5 +95,27 @@ public class PrettyUrlApiTests {
         } catch (Exception ex) {
             Assert.assertEquals(true, ex.getMessage().contains("Url is invalid"));
         }
+    }
+
+    @Test
+    public void testRedirectToFullUrl() throws URISyntaxException {
+
+        RestTemplate restTemplate = new RestTemplate();
+        final String baseUrl = serverUrl + "urlInfo";
+        URI uri = new URI(baseUrl);
+        String alias = Helper.generateRandomString(10);
+        UrlInfo urlInfo = new UrlInfo(alias, "https://stackoverflow.com/");
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<UrlInfo> request = new HttpEntity<>(urlInfo, headers);
+        ResponseEntity<String> result = restTemplate.postForEntity(uri, request, String.class);
+
+        // redirect to full url
+        HttpHeaders redirectHeaders = new HttpHeaders();
+        URI serverUri = new URI(serverUrl + alias);
+        HttpEntity<UrlInfo> requestEntity = new HttpEntity<>(null, redirectHeaders);
+        ResponseEntity<String> redirectResult = restTemplate.exchange(serverUri, HttpMethod.GET, requestEntity, String.class);
+
+        Assert.assertEquals(302, redirectResult.getStatusCodeValue());
     }
 }
