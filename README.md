@@ -15,6 +15,7 @@ Features
 - Possibility to create the short link by providing the alias. also check the alias is existing otherwise will throw an exception.
 - The links will be remove/expired in the minutes that has been provided in application.properties.
 - Display all urls
+- Visit the website(full url) by accessing the shorten link
 
 To test
 ------------------------------------
